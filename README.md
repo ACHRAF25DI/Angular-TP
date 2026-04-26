@@ -45,3 +45,4 @@ src/app/
 - 🔍 Recherche filtrante en temps réel (nom ou email)
 - 📊 Compteur de contacts et statistiques lifecycle
 - 🕐 Horodatage du chargement de la liste
+"# Angular-TP" 
