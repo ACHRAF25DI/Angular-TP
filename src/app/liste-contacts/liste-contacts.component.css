@@ -1,0 +1,4 @@
+/* liste-contacts.component.css */
+:host {
+  display: block;
+}

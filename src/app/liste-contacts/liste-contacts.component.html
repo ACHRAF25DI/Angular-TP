@@ -1,0 +1,56 @@
+<!-- liste-contacts.component.html -->
+
+<section>
+  <h2>📋 Liste des Contacts ({{ contacts.length }})</h2>
+
+  <!-- Statistiques lifecycle (Exercice 4) -->
+  <div class="stats-bar">
+    <span>⏰ Chargé à : <strong>{{ dateChargement }}</strong></span>
+    <span *ngIf="nombreAjouts > 0" class="badge">
+      +{{ nombreAjouts }} ajout(s) depuis le chargement
+    </span>
+  </div>
+
+  <!-- Recherche en temps réel (Exercice 5B) -->
+  <input
+    [(ngModel)]="recherche"
+    placeholder="🔍 Rechercher un contact..."
+    style="margin-bottom: 12px;"
+  >
+  <p style="font-size: 13px; color: #888; margin: 0 0 8px;">
+    {{ contactsFiltres.length }} résultat(s)
+  </p>
+
+  <!-- Message si liste vide -->
+  <p *ngIf="contacts.length === 0" style="color: #888; font-style: italic;">
+    Aucun contact pour le moment. Ajoutez votre premier contact !
+  </p>
+
+  <!-- Affichage si liste non vide -->
+  <ul *ngIf="contacts.length > 0">
+    <li *ngFor="let c of contactsFiltres; let i = index">
+      <span style="color: #aaa; font-size: 13px; min-width: 24px;">
+        {{ i + 1 }}.
+      </span>
+      <div style="flex: 1;">
+        <strong>{{ c.nom }}</strong>
+        &nbsp;—&nbsp;
+        <span style="color: #555;">{{ c.email }}</span>
+        <small *ngIf="c.telephone" style="color: #888; margin-left: 8px;">
+          📞 {{ c.telephone }}
+        </small>
+      </div>
+      <!-- Bouton suppression (Exercice 5A) -->
+      <button class="delete-btn" (click)="supprimer(i)" title="Supprimer ce contact">
+        ❌
+      </button>
+    </li>
+  </ul>
+
+  <!-- Message si aucun résultat de recherche -->
+  <p *ngIf="contacts.length > 0 && contactsFiltres.length === 0"
+     style="color: #e57373; font-style: italic;">
+    Aucun contact ne correspond à "{{ recherche }}".
+  </p>
+
+</section>

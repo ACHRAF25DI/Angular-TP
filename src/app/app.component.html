@@ -1,0 +1,25 @@
+<!-- app.component.html -->
+<div class="app-container">
+
+  <!-- En-tête avec statut -->
+  <header>
+    <h1>📋 Gestionnaire de Contacts</h1>
+    <span>{{ messageStatut }}</span>
+  </header>
+
+  <!-- Mise en page en grille -->
+  <div class="grid-layout">
+
+    <!-- Formulaire (enfant avec @Output) -->
+    <app-formulaire-contact
+      (contactSauvegarde)="ajouterContact($event)">
+    </app-formulaire-contact>
+
+    <!-- Liste (enfant avec @Input et @Output) -->
+    <app-liste-contacts
+      [contacts]="mesContacts"
+      (contactSupprime)="supprimerContact($event)">
+    </app-liste-contacts>
+
+  </div>
+</div>
